@@ -1,14 +1,18 @@
+
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-  </div>
+  <div class="hello">我是小头爸爸的哥哥</div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: "Father",
   props: {
     msg: String
+  },
+  created() {
+    this.$parent.$on("goOut", a => {
+      console.log("小头爸爸干嘛去了?大头爷爷回答", a);
+    });
   }
 };
 </script>
