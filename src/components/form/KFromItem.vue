@@ -43,7 +43,7 @@ export default {
       });
 
       //使用该实例执行校验
-      schema.validate(
+      return schema.validate(
         {
           [this.prop]: value
         },
