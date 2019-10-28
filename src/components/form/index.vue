@@ -3,8 +3,11 @@
     <KForm :model="model" :rules="rules" ref="loginForm">
       <KFromItem label="用户名" prop="username">
         <!--子集可通过 v-bind="$attrs" 获取placeholder="请输入用户名" 此类信息  -->
-        <k-input v-model="model.username" placeholder="请输入用户名"></k-input>
+        <div>
+          <k-input v-model="model.username" placeholder="请输入用户名"></k-input>
+        </div>
       </KFromItem>
+
       <KFromItem label="密码" prop="password">
         <k-input v-model="model.password" type="password" placeholder="请输入密码"></k-input>
       </KFromItem>
