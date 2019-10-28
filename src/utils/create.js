@@ -24,12 +24,8 @@ export default function create(Component, props) {
      }
      return comp
      */
-    Object.keys(props).forEach(v => {
-        Component.props[v].default = props[v]
-    })
-
     const Comp = Vue.extend(Component)
-    const comp = new Comp()
+    const comp = new Comp({ propsData: props })
     comp.$mount()
     document.body.appendChild(comp.$el)
 
