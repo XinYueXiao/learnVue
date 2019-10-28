@@ -37,6 +37,7 @@ export default {
       var parent = this.$parent || this.$root;
       var name = parent.$options.componentName;
       //如果父级存在        name存在或者name不等于传入的componentName都进入循环
+
       while (parent && (!name || name !== componentName)) {
         //新的父级元素
         parent = parent.$parent;
@@ -45,7 +46,7 @@ export default {
           name = parent.$options.componentName;
         }
       }
-      //结束循环条件
+      //结束循环条件 parent 不存在   &&  name不存在&&name==compontName
       if (parent) {
         parent.$emit.apply(parent, [eventName].concat(params));
       }
