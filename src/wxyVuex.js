@@ -10,10 +10,10 @@ class Store {
         //添加getter方法
         this.getters = {}
         let keys = Object.keys(options.getters)
-        keys.map(getName => {
-            Object.defineProperty(this.getters, getName, {
+        keys.forEach(key => {
+            Object.defineProperty(this.getters, key, {
                 get: () => {
-                    return options.getters[getName](this.state)
+                    return options.getters[key](this.state)
                 }
             })
         })
