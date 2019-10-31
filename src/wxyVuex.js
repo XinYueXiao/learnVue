@@ -8,12 +8,16 @@ class Store {
         this.commit = this.commit.bind(this)
         this.dispatch = this.dispatch.bind(this)
         //添加getter方法
+        options.getters && this.handleGetters(options.getters)
+
+    }
+    handleGetters(getters) {
         this.getters = {}
-        let keys = Object.keys(options.getters)
+        let keys = Object.keys(getters)
         keys.forEach(key => {
             Object.defineProperty(this.getters, key, {
                 get: () => {
-                    return options.getters[key](this.state)
+                    return getters[key](this.state)
                 }
             })
         })
