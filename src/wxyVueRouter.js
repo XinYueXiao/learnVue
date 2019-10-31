@@ -43,8 +43,12 @@ class WxyVueRouter {
                 }
             })
         Vue.component('router-view', {
-            render: (h) => {
-                const Component = this.routeMap[this.app.current].component
+            // Vue.js 组件提供了一个 functional 开关，设置为 true 后，就可以让组件变为无状态、无实例的函数化组件。因为只是函数，所以渲染的开销相对来说，较小。
+            functional: true,
+            //函数化的组件中的 Render 函数，提供了第二个参数 context 作为上下文，data、props、slots、children 以及 parent 都可以通过 context 
+            render(h, { parent }) {
+                const router = parent.$router
+                const Component = router.routeMap[router.app.current].component
                 return h(Component)
             }
         })
